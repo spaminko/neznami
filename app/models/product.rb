@@ -1,4 +1,9 @@
 class Product < ActiveRecord::Base
+
+  def self.find_products_for_sale
+       find(:all, :order => "title")
+  end
+  
   validates_presence_of :title, :description, :img_url
   validates_numericality_of :price
   validate :the_price_must_be_at_least_cent
